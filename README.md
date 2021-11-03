@@ -14,4 +14,4 @@ MIT
 
 ## About
 
-Short YouTube Video of this application in action can be found here.
+Short YouTube Video of this application in action can be found [here](https://youtu.be/_s0IuqQR4rg).
