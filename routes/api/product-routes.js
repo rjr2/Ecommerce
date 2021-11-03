@@ -8,10 +8,10 @@ router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   try {
-    const libraryCardData = await LibraryCard.findAll({
-      include: [{ model: Reader }],
+    const productData = await Product.findAll({
+      include: [Category, {model:Tag, through: ProductTag} ],
     });
-    res.status(200).json(libraryCardData);
+    res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -109,7 +109,7 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => res.json({msg:"update success"}))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
